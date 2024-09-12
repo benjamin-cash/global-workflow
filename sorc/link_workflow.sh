@@ -77,6 +77,8 @@ case "${machine}" in
   "s4")       FIX_DIR="/data/prod/glopara/fix" ;;
   "gaea")     FIX_DIR="/gpfs/f5/ufs-ard/world-shared/global/glopara/data/fix" ;;
   "noaacloud") FIX_DIR="/contrib/global-workflow-shared-data/fix" ;;
+  "frontera") FIX_DIR="/work2/02441/bcash/frontera/ufs_input/fix" ;;
+  "container") FIX_DIR="/work2/02441/bcash/frontera/ufs_input/fix" ;;
   *)
     echo "FATAL: Unknown target machine ${machine}, couldn't set FIX_DIR"
     exit 1
