@@ -38,7 +38,8 @@ case $(hostname -f) in
   [Hh]ercules-login-[1-4].[Hh][Pp][Cc].[Mm]s[Ss]tate.[Ee]du) MACHINE_ID=hercules ;; ### hercules1-4
 
   login[1-4].stampede2.tacc.utexas.edu) MACHINE_ID=stampede ;; ### stampede1-4
-
+  *frontera.tacc.utexas.edu) MACHINE_ID=frontera ;;
+  *orc.gmu.edu) MACHINE_ID=hopper ;;
   login0[1-2].expanse.sdsc.edu) MACHINE_ID=expanse ;; ### expanse1-2
 
   discover3[1-5].prv.cube) MACHINE_ID=discover ;; ### discover31-35
@@ -61,7 +62,10 @@ if [[ "${MACHINE_ID}" != "UNKNOWN" ]]; then
 fi
 
 # Try searching based on paths since hostname may not match on compute nodes
-if [[ -d /lfs/h3 ]]; then
+if [[ -d /opt/container-scripts ]]; then
+  # We are in the container
+  MACHINE_ID=container
+elif [[ -d /lfs/h3 ]]; then
   # We are on NOAA Cactus or Dogwood
   MACHINE_ID=wcoss2
 elif [[ -d /lfs/h1 && ! -d /lfs/h3 ]]; then
