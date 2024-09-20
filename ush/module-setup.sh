@@ -1,11 +1,16 @@
 #!/bin/bash
-set -u
 
 source "${HOMEgfs}/ush/detect_machine.sh"
 
+echo $MACHINE_ID
 if [[ ${MACHINE_ID} = container ]] ; then
    source /usr/lmod/lmod/init/bash
    module purge
+   set -u
+
+elif [[ ${MACHINE_ID} = frontera ]] ; then
+   module purge
+   set -u
 
 elif [[ ${MACHINE_ID} = jet* ]] ; then
     # We are on NOAA Jet
@@ -103,10 +108,11 @@ else
     echo WARNING: UNKNOWN PLATFORM 1>&2
 fi
 
+# Set strict causes crash in apptainer
 # If this function exists in the environment, run it; else do not
-ftype=$(type -t set_strict || echo "")
-if [[ "${ftype}" == "function" ]]; then
-  set_strict
-else
-  set +u
-fi
+#ftype=$(type -t set_strict || echo "")
+#if [[ "${ftype}" == "function" ]]; then
+#  set_strict
+#else
+#  set +u
+#fi

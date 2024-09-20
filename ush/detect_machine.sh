@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -u
+
 # The authoritative copy of this script lives in the ufs-weather-model at:
 # https://github.com/ufs-community/ufs-weather-model/blob/develop/tests/detect_machine.sh
 # If any local modifications are made or new platform support added,
