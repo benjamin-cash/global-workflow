@@ -343,7 +343,6 @@
 :TMP:PV=2e-06 (Km^2/kg/s) surface:
 :TMP:PV=-5e-07 (Km^2/kg/s) surface:
 :TMP:PV=5e-07 (Km^2/kg/s) surface:
-:TMP:surface:
 :TMP:tropopause:
 :TOZNE:entire atmosphere (considered as a single layer):
 :TSNOWP:surface:
@@ -362,7 +361,6 @@
 :UGRD:150 mb:
 :UGRD:180-150 mb above ground:
 :UGRD:1829 m above mean sea level:
-:UGRD:200 mb:
 :UGRD:20 mb:
 :UGRD:2 mb:
 :UGRD:250 mb:
@@ -380,7 +378,6 @@
 :UGRD:450 mb:
 :UGRD:4572 m above mean sea level:
 :UGRD:457 m above mean sea level:
-:UGRD:500 mb:
 :UGRD:50 mb:
 :UGRD:5 mb:
 :UGRD:550 K isentropic level:
@@ -396,7 +393,6 @@
 :UGRD:750 mb:
 :UGRD:800 mb:
 :UGRD:80 m above ground:
-:UGRD:850 mb:
 :UGRD:900 mb:
 :UGRD:90-60 mb above ground:
 :UGRD:914 m above mean sea level:
@@ -448,7 +444,6 @@
 :VGRD:450 mb:
 :VGRD:4572 m above mean sea level:
 :VGRD:457 m above mean sea level:
-:VGRD:500 mb:
 :VGRD:50 mb:
 :VGRD:5 mb:
 :VGRD:550 K isentropic level:
@@ -464,7 +459,6 @@
 :VGRD:750 mb:
 :VGRD:800 mb:
 :VGRD:80 m above ground:
-:VGRD:850 mb:
 :VGRD:900 mb:
 :VGRD:90-60 mb above ground:
 :VGRD:914 m above mean sea level:
