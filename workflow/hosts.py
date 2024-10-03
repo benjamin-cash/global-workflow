@@ -17,7 +17,8 @@ class Host:
 
     SUPPORTED_HOSTS = ['HERA', 'ORION', 'JET', 'HERCULES',
                        'WCOSS2', 'S4', 'CONTAINER', 'GAEA',
-                       'AWSPW', 'AZUREPW', 'GOOGLEPW']
+                       'AWSPW', 'AZUREPW', 'GOOGLEPW', 'HOPPER',
+                       'FRONTERA']
 
     def __init__(self, host=None):
 
@@ -38,11 +39,15 @@ class Host:
         container = os.getenv('SINGULARITY_NAME', None)
         pw_csp = os.getenv('PW_CSP', None)
 
-        if os.path.exists('/scratch1/NCEPDEV'):
+        if  os.path.exists('/groups/BCASH'):
+            machine = 'HOPPER'
+        elif os.path.exists('/scratch1/02441'):
+            machine = 'FRONTERA'
+        elif os.path.exists('/scratch1/NCEPDEV'):
             machine = 'HERA'
         elif os.path.exists('/work/noaa'):
             machine = socket.gethostname().split("-", 1)[0].upper()
-        elif os.path.exists('/lfs5/HFIP'):
+        elif os.path.exists('/lfs4/HFIP'):
             machine = 'JET'
         elif os.path.exists('/lfs/f1'):
             machine = 'WCOSS2'
