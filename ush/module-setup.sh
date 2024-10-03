@@ -3,7 +3,11 @@ set -u
 
 source "${HOMEgfs}/ush/detect_machine.sh"
 
-if [[ ${MACHINE_ID} = jet* ]] ; then
+if [[ ${MACHINE_ID} = container ]] ; then
+   source /usr/lmod/lmod/init/bash
+   module purge
+
+elif [[ ${MACHINE_ID} = jet* ]] ; then
     # We are on NOAA Jet
     if ( ! eval module help > /dev/null 2>&1 ) ; then
         source /apps/lmod/lmod/init/bash
