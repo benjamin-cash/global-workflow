@@ -73,11 +73,12 @@ case "${machine}" in
   "hera")     FIX_DIR="/scratch1/NCEPDEV/global/glopara/fix" ;;
   "orion")    FIX_DIR="/work/noaa/global/glopara/fix" ;;
   "hercules") FIX_DIR="/work/noaa/global/glopara/fix" ;;
-  "jet")      FIX_DIR="/lfs5/HFIP/hfv3gfs/glopara/FIX/fix" ;;
+  "jet")      FIX_DIR="/lfs4/HFIP/hfv3gfs/glopara/git/fv3gfs/fix" ;;
   "s4")       FIX_DIR="/data/prod/glopara/fix" ;;
   "gaea")     FIX_DIR="/gpfs/f5/ufs-ard/world-shared/global/glopara/data/fix" ;;
   "noaacloud") FIX_DIR="/contrib/global-workflow-shared-data/fix" ;;
   "frontera") FIX_DIR="/work2/02441/bcash/frontera/ufs_input/fix" ;;
+  "container") FIX_DIR="/groups/BCASH/ufs_input/fix" ;;
   "hopper") FIX_DIR="/groups/BCASH/ufs_input/fix" ;;
   *)
     echo "FATAL: Unknown target machine ${machine}, couldn't set FIX_DIR"
@@ -215,7 +216,12 @@ declare -a ufs_templates=("model_configure.IN" "input_global_nest.nml.IN"\
                           "ufs.configure.s2swa_esmf.IN" \
                           "ufs.configure.leapfrog_atm_wav.IN" \
                           "ufs.configure.leapfrog_atm_wav_esmf.IN" \
-                          "post_itag_gfs")
+                          "post_itag_gfs" \
+                          "postxconfig-NT-gfs.txt" \
+                          "postxconfig-NT-gfs_FH00.txt")
+                          # TODO: The above postxconfig files in the UFSWM are not the same as the ones in UPP
+                          # TODO: GEFS postxconfig files also need to be received from UFSWM
+                          # See forecast_predet.sh where the UPP versions are used.  They will need to be replaced with these.
 for file in "${ufs_templates[@]}"; do
   [[ -s "${file}" ]] && rm -f "${file}"
   ${LINK_OR_COPY} "${HOMEgfs}/sorc/ufs_model.fd/tests/parm/${file}" .
@@ -276,6 +282,7 @@ if [[ -d "${HOMEgfs}/sorc/gdas.cd/build" ]]; then
     ${LINK_OR_COPY} "${HOMEgfs}/sorc/gdas.cd/ush/ioda/bufr2ioda/marine/bufr2ioda_insitu_surface_${platform}.py" .
   done
 fi
+
 
 #------------------------------
 #--add DA Monitor file (NOTE: ensure to use correct version)
@@ -373,7 +380,6 @@ if [[ -d "${HOMEgfs}/sorc/gdas.cd/build" ]]; then
                        "gdas_incr_handler.x" \
                        "gdas_obsprovider2ioda.x" \
                        "gdas_socahybridweights.x" \
-                       "gdassoca_obsstats.x" \
                        "gdasapp_land_ensrecenter.x" \
                        "bufr2ioda.x" \
                        "calcfIMS.exe" \
