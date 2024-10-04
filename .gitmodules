@@ -9,21 +9,26 @@
 [submodule "sorc/gfs_utils.fd"]
   path = sorc/gfs_utils.fd
   url = https://github.com/benjamin-cash/gfs-utils
+  branch = feature/SFS_container
 [submodule "sorc/ufs_utils.fd"]
   path = sorc/ufs_utils.fd
   url = https://github.com/benjamin-cash/UFS_UTILS.git
+  branch = feature/SFS_container
 [submodule "sorc/verif-global.fd"]
   path = sorc/verif-global.fd
   url = https://github.com/NOAA-EMC/EMC_verif-global.git
 [submodule "sorc/gsi_enkf.fd"]
   path = sorc/gsi_enkf.fd
   url = https://github.com/benjamin-cash/GSI.git
+  branch = feature/SFS_container
 [submodule "sorc/gdas.cd"]
   path = sorc/gdas.cd
   url = https://github.com/NOAA-EMC/GDASApp.git
 [submodule "sorc/gsi_utils.fd"]
   path = sorc/gsi_utils.fd
   url = https://github.com/benjamin-cash/GSI-Utils.git
+  branch = feature/SFS_container
 [submodule "sorc/gsi_monitor.fd"]
   path = sorc/gsi_monitor.fd
   url = https://github.com/benjamin-cash/GSI-Monitor.git
+  branch = feature/SFS_container
