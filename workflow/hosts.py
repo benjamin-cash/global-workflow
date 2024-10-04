@@ -17,7 +17,8 @@ class Host:
 
     SUPPORTED_HOSTS = ['HERA', 'ORION', 'JET', 'HERCULES',
                        'WCOSS2', 'S4', 'CONTAINER', 'GAEA',
-                       'AWSPW', 'AZUREPW', 'GOOGLEPW']
+                       'AWSPW', 'AZUREPW', 'GOOGLEPW',
+                       'HOPPER', 'FRONTERA']
 
     def __init__(self, host=None):
 
