@@ -20,6 +20,7 @@ case ${machine} in
   "HERA")     max_tasks_per_node=40;;
   "ORION")    max_tasks_per_node=40;;
   "HERCULES") max_tasks_per_node=80;;
+  "FRONTERA") max_tasks_per_node=56;;
   "JET")
     case ${PARTITION_BATCH} in
       "xjet")          max_tasks_per_node=24;;
