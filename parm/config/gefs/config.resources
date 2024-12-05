@@ -20,6 +20,7 @@ case ${machine} in
   "HERA")     max_tasks_per_node=40;;
   "ORION")    max_tasks_per_node=40;;
   "HERCULES") max_tasks_per_node=80;;
+  "FRONTERA") max_tasks_per_node=56;;
   "JET")
     case ${PARTITION_BATCH} in
       "xjet")          max_tasks_per_node=24;;
@@ -66,6 +67,9 @@ case ${step} in
     export tasks_per_node=1
     export threads_per_task=1
     export is_exclusive=True
+    if [[ ${machine} == "FRONTERA" ]]; then
+	export PARTITION_BATCH="development"
+    fi
     ;;
 
   "waveinit")
@@ -87,7 +91,9 @@ case ${step} in
 
   "fcst" | "efcs")
     export is_exclusive=True
-
+    if [[ ${machine} == "FRONTERA" ]]; then
+        export PARTITION_BATCH="normal"
+    fi
     export layout_x=${layout_x_gfs}
     export layout_y=${layout_y_gfs}
     export WRITE_GROUP=${WRITE_GROUP_GFS}
@@ -208,6 +214,9 @@ case ${step} in
     export threads_per_task=1
     export tasks_per_node="${ntasks}"
     export is_exclusive=True
+    if [[ ${machine} == "FRONTERA" ]]; then
+        export PARTITION_BATCH="small"
+    fi
     ;;
 
   "atmos_ensstat")
@@ -216,6 +225,9 @@ case ${step} in
     export threads_per_task=1
     export tasks_per_node="${ntasks}"
     export is_exclusive=True
+    if [[ ${machine} == "FRONTERA" ]]; then
+        export PARTITION_BATCH="small"
+    fi
     ;;
 
   "oceanice_products")
@@ -224,6 +236,9 @@ case ${step} in
     export tasks_per_node=1
     export threads_per_task=1
     export memory="96GB"
+    if [[ ${machine} == "FRONTERA" ]]; then
+        export PARTITION_BATCH="small"
+    fi
     ;;
 
   "wavepostsbs")
@@ -233,6 +248,9 @@ case ${step} in
     export tasks_per_node=$(( max_tasks_per_node / threads_per_task ))
     export NTASKS=${ntasks}
     export memory="10GB"
+    if [[ ${machine} == "FRONTERA" ]]; then
+        export PARTITION_BATCH="small"
+    fi
     ;;
 
   # The wavepost*pnt* jobs are I/O heavy and do not scale well to large nodes.
@@ -286,6 +304,9 @@ case ${step} in
     export threads_per_tasks_gfs="${threads_per_task_gefs}"
     export tasks_per_node_gfs="${tasks_per_node_gefs}"
     export is_exclusive=False
+    if [[ ${machine} == "FRONTERA" ]]; then
+        export PARTITION_BATCH="small"
+    fi
     ;;
 
   "arch")
@@ -294,6 +315,9 @@ case ${step} in
     export tasks_per_node=1
     export threads_per_task=1
     export memory="4096M"
+    if [[ ${machine} == "FRONTERA" ]]; then
+        export PARTITION_BATCH="small"
+    fi
     ;;
 
   "cleanup")
@@ -302,6 +326,9 @@ case ${step} in
     export tasks_per_node=1
     export threads_per_task=1
     export memory="4096M"
+    if [[ ${machine} == "FRONTERA" ]]; then
+        export PARTITION_BATCH="small"
+    fi
     ;;
   *)
     echo "FATAL ERROR: Invalid job ${step} passed to ${BASH_SOURCE[0]}"
