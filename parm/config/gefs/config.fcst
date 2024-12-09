@@ -7,6 +7,8 @@ echo "BEGIN: config.fcst"
 
 export USE_ESMF_THREADING="YES"  # Toggle to use ESMF-managed threading or traditional threading in UFSWM
 export COPY_FINAL_RESTARTS="NO" # Toggle to copy restarts from the end of GFS/GEFS Run (GDAS is handled seperately)
+export USE_ATM_ENS_PERTURB_FILES=@USE_ATM_ENS_PERTURB_FILES@
+export USE_OCN_ENS_PERTURB_FILES=@USE_OCN_ENS_PERTURB_FILES@
 
 # Source model specific information that is resolution dependent
 string="--fv3 ${CASE}"
